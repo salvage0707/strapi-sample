@@ -2,6 +2,11 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
+executors:
+  node:
+    docker:
+      - image: node:21-alpine3.17
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
@@ -10,11 +15,10 @@ jobs:
       node_env:
         type: string
         default: "production"
-
     docker:
       - image: node:21-alpine3.17
-        environment:
-          NODE_ENV: << parameters.node_env >>
+    environment:
+      NODE_ENV: << parameters.node_env >>
     steps:
       - checkout
       - run:
