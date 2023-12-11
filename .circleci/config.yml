@@ -10,7 +10,7 @@ jobs:
       node_env:
         type: string
         default: "production"
-    enviroments:
+    environment:
       NODE_ENV: << parameters.node_env >>
     docker:
       - image: cimg/base:stable
