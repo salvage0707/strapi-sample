@@ -10,10 +10,11 @@ jobs:
       node_env:
         type: string
         default: "production"
-    environment:
-      NODE_ENV: << parameters.node_env >>
+
     docker:
-      - image: cimg/base:stable
+      - image: node:21-alpine3.17
+        environment:
+          NODE_ENV: << parameters.node_env >>
     steps:
       - checkout
       - run:
